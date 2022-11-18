@@ -28,3 +28,22 @@ def convert_file():
 
     #mlab shows the plotted 3D DEM
     mlab.show()
+    
+
+
+
+
+
+
+#initializing the window
+x = tk.Tk()
+
+#window size
+x.geometry("375x400")
+
+#window title
+x.title("GUI Program")
+
+
+#running the "x" GUI variables
+x.mainloop()
