@@ -4,6 +4,7 @@ import matlab as mat
 from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
+import system
 
 
 
@@ -58,3 +59,8 @@ browse_button.grid(row = 1, column = 2)
 
 #running the "x" GUI variables
 x.mainloop()
+
+
+##################want to perhaps run code from another file???##################################
+#os.system("D:\Random Stuff\array_test.py")
+
