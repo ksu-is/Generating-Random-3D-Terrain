@@ -28,5 +28,3 @@ def convert_file():
 
     #mlab shows the plotted 3D DEM
     mlab.show()
-    
-convert_file()
