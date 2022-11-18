@@ -5,5 +5,6 @@
 - [x] Edit and Commit Changes to readme.md file
 - [x] Explored Python Code Related to Project
 - [x] Create Initial Code in MAIN_PROJECT.py to import data, functions, and files and to display everything
-- [ ] Create GUI interface linking initial code with buttons for a clean look
-- [ ] 
+- [x] Create GUI interface linking initial code with buttons for a clean look
+- [ ] Improve look and feel of GUI with possible nested windows
+- [ ] Create function that will be used to generate random terrain (2d array which will be converted to 3d)
