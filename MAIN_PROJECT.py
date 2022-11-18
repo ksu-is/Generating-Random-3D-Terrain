@@ -45,5 +45,16 @@ x.geometry("375x400")
 x.title("GUI Program")
 
 
+
+#button properties, command is the function/action performed
+dem_button = tk.Button(x, text = "Create 3D Elevation Model", width = 25, height = 10, activebackground = "red", command = convert_file)
+dem_button.grid(row = 1, column = 1)
+
+browse_button = tk.Button(x, text = "Browse Files...", width = 25, height = 10, activebackground = "red")
+browse_button.grid(row = 1, column = 2)
+
+########################### want to insert another button to call a function that will generate a random DEM array #############################
+
+
 #running the "x" GUI variables
 x.mainloop()
