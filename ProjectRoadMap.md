@@ -8,3 +8,5 @@
 - [x] Create GUI interface linking initial code with buttons for a clean look
 - [ ] Improve look and feel of GUI with possible nested windows
 - [ ] Create function that will be used to generate random terrain (2d array which will be converted to 3d)
+- [ ] Attach random terrain generation function to Tkinter button
+- [ ] Create a nested window/button to reload randomly generated terrain window?
