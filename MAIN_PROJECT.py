@@ -4,6 +4,7 @@ import matlab as mat
 from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
+from numpy import random
 #import system - Might not need?
 
 
@@ -37,6 +38,7 @@ def convert_file():
 
 
 
+
 #initializing the window
 x = tk.Tk()
 
@@ -45,7 +47,7 @@ x.geometry("400x350")
 
 #window title
 x.title("3D Terrain Generation")
-x.configure(bg = "#9A9AC0")
+x.configure(bg = "dark slate blue")
 
 
 
@@ -73,18 +75,18 @@ x.mainloop()
 
 #the code that I want to run from the array_test.py file
 #will need to adjust and create loop for a 1000x1000(or larger) grid (1000x1000 pixels)
-def random_generation_testing():
-    x1 = random.rand()
-    y1 = random.rand()
-    z1 = random.rand()
 
-    x2 = random.rand()
-    y2 = random.rand() ########################  Create loop to generate a large array. Maybe 1000 x 1000 ############
-    z2 = random.rand()
+x1 = random.rand()
+y1 = random.rand()
+z1 = random.rand()
 
-    x3 = random.rand()
-    y3 = random.rand()
-    z3 = random.rand()
+x2 = random.rand()
+y2 = random.rand() ########################  Create loop to generate a large array. Maybe 1000 x 1000 ############
+z2 = random.rand()
 
-    ############# [x,y,z] values #########
-    test_array = ([x1,y1,z1], [x2,y2,z2], [x3,y3,z3])
+x3 = random.rand()
+y3 = random.rand()
+z3 = random.rand()
+
+############# [x,y,z] values #########
+test_array = ([x1,y1,z1], [x2,y2,z2], [x3,y3,z3])
