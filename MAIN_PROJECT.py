@@ -1,11 +1,9 @@
-#needed to import numpy, gdal, and matlab
-import numpy
+#needed to import numpy, gdal, matlab, and tkinter
 import matlab as mat
 from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
 import numpy as np
-
 
 
 def convert_file():
@@ -25,7 +23,6 @@ def convert_file():
     mlab.figure(size = (1025, 1025))
 
     #mlab surf function takes the 2D numpy array and plots the surface, warp scale is vertical exaggeration/scale factor
-    #################### Potentially use this surf function to plot and create a 3D version of a randomly generated array #############################
     mlab.surf(data_array, warp_scale = 0.01, colormap = "cool")
 
     #mlab shows the plotted 3D DEM
@@ -34,7 +31,17 @@ def convert_file():
 
 
 
+def generate_terrain():
+    columns = 100
+    rows = 100
 
+
+    #large_array = np.random.randint(0,10, size = (rows,columns))
+    large_array = np.random.random((rows,columns))
+    
+    
+    mlab.surf(large_array, warp_scale = 1, colormap = "cool")
+    mlab.show()
 
 
 
@@ -57,7 +64,7 @@ dem_button.grid(row = 1, column = 1)
 browse_button = tk.Button(x, text = "Browse Files...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6)
 browse_button.grid(row = 1, column = 2)
 
-random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrain", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", bd = 6)
+random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrain", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", bd = 6, command = generate_terrain)
 random_generation_button.grid(row = 2, column = 1)
 
 
@@ -65,12 +72,3 @@ random_generation_button.grid(row = 2, column = 1)
 x.mainloop()
 
 
-
-
-
-a = 5
-b = 5
-
-
-test = np.random.randint(0,5, size = (a,b))
-print (test)
