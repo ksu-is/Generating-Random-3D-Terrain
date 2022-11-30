@@ -90,3 +90,14 @@ z3 = random.rand()
 
 ############# [x,y,z] values #########
 test_array = ([x1,y1,z1], [x2,y2,z2], [x3,y3,z3])
+
+
+
+a = 0
+b = 0
+c = range(1000)
+
+large_array = ([a],[b],[c])
+
+for array_position in c:
+    asd
