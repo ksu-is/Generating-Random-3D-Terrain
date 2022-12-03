@@ -8,6 +8,8 @@ from tkinter import *
 from tkinter import filedialog
 
 
+current_opened_file = "D:\Random Stuff\image.tif"
+
 def convert_file():
 
     #assigning the file path for the tif image
@@ -48,12 +50,12 @@ def generate_terrain():
 
 
 
-current_opened_file = 'D:\Random Stuff\image.tif'
-
-
 def file_browser():
-    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File")
-    current_opened_file = select_file_name
+    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File",)
+
+    if (select_file_name):
+        current_opened_file = select_file_name
+        current_selected_file.configure(text = "Current Selected File: " + current_opened_file)
 
 
 #initializing the window
@@ -84,8 +86,9 @@ random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrai
 bd = 6, command = generate_terrain)
 random_generation_button.grid(row = 2, column = 1)
 
-current_selected_file = Label(text = "Current Selected File: " + current_opened_file, width = 50, height = 1, fg = "White", bg = "dark slate blue", anchor= "sw")
+current_selected_file = tk.Label(x, text= "Current Selected File: " + current_opened_file, width = 50, height = 1, fg = "White", bg = "dark slate blue", anchor= "sw")
 current_selected_file.place(x = 235, y = 160)
+
 
 
 #running the "x" GUI variables
