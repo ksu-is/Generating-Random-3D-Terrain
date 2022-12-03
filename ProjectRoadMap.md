@@ -6,8 +6,8 @@
 - [x] Explored Python Code Related to Project
 - [x] Create Initial Code in MAIN_PROJECT.py to import data, functions, and files and to display everything
 - [x] Create GUI interface linking initial code with buttons for a clean look
-- [ ] Improve look and feel of GUI with possible nested windows
+- [x] Improve look and feel of GUI with possible nested windows
 - [ ] Create function that will be used to generate random terrain (2d array which will be converted to 3d)
-- [ ] Attach random terrain generation function to Tkinter button
+- [x] Attach random terrain generation function to Tkinter button
 - [ ] Create a nested window/button to reload randomly generated terrain window?
 - [ ] Possibly Generate statistics for the loaded file DEM and/or random generated terrain? (Average DEM height, slope, etc...)

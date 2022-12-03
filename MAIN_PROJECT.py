@@ -4,13 +4,14 @@ from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
 import numpy as np
+from tkinter import *
 from tkinter import filedialog
 
 
 def convert_file():
 
     #assigning the file path for the tif image
-    file_path = 'D:\Random Stuff\image.tif'
+    file_path = current_opened_file
     ######## Want to make the file_path a possible input for users to load custom DEM files through GUI instead of changing code #######
 
     #opening the tif file and assigning it
@@ -25,6 +26,7 @@ def convert_file():
 
     #mlab surf function takes the 2D numpy array and plots the surface, warp scale is vertical exaggeration/scale factor
     mlab.surf(data_array, warp_scale = 0.01, colormap = "cool")
+
 
     #mlab shows the plotted 3D DEM
     mlab.show()
@@ -46,52 +48,44 @@ def generate_terrain():
 
 
 
+current_opened_file = 'D:\Random Stuff\image.tif'
 
-def browser_file_name():
+
+def file_browser():
     select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File")
+    current_opened_file = select_file_name
 
 
 #initializing the window
 x = tk.Tk()
 
 #window size
-x.geometry("400x350")
+x.geometry("600x338")
 
 #window title
 x.title("3D Terrain Generation")
 x.configure(bg = "dark slate blue")
-
-def file_browser_window():
-    x2 = tk.Tk()
-    x2.title("File Browser")
-    x2.geometry("400x400")
-    x2.configure(bg = "dark slate gray")
-
-    file_select = tk.Button(x2, text = "Select Files", width = 20, height = 5, bg = "grey", bd = 6, command = browser_file_name)
-    file_select.grid(row = 1, column = 1)
-
-    file_browser_quit = tk.Button(x2, text = "Exit", width = 20, height = 5, bg = "grey", bd = 6, command = quit)
-    file_select.grid(row = 1, column = 2)
 
 
 
 
 #button properties, command is the function/action performed
 exit_button = tk.Button(x, text = "Exit...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6, command = x.destroy)
-exit_button.grid(row = 2, column = 2)
+exit_button.place(x = 235, y = 245)
+
+browse_button = tk.Button(x, text = "Browse Files...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6, command= file_browser)
+browse_button.place(x = 235, y = 0)
 
 dem_button = tk.Button(x, text = "Create 3D Elevation Model", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", 
 bd = 6, command = convert_file)
 dem_button.grid(row = 1, column = 1)
 
-
-browse_button = tk.Button(x, text = "Browse Files...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6, command= file_browser_window)
-browse_button.grid(row = 1, column = 2)
-
-
 random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrain", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", 
 bd = 6, command = generate_terrain)
 random_generation_button.grid(row = 2, column = 1)
+
+current_selected_file = Label(text = "Current Selected File: " + current_opened_file, width = 50, height = 1, fg = "White", bg = "dark slate blue", anchor= "sw")
+current_selected_file.place(x = 235, y = 160)
 
 
 #running the "x" GUI variables
