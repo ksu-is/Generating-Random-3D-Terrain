@@ -4,6 +4,7 @@ from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
 import numpy as np
+from tkinter import filedialog
 
 
 def convert_file():
@@ -45,6 +46,11 @@ def generate_terrain():
 
 
 
+
+def browser_file_name():
+    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File")
+
+
 #initializing the window
 x = tk.Tk()
 
@@ -55,16 +61,36 @@ x.geometry("400x350")
 x.title("3D Terrain Generation")
 x.configure(bg = "dark slate blue")
 
+def file_browser_window():
+    x2 = tk.Tk()
+    x2.title("File Browser")
+    x2.geometry("400x400")
+    x2.configure(bg = "dark slate gray")
+
+    file_select = tk.Button(x2, text = "Select Files", width = 20, height = 5, bg = "grey", bd = 6, command = browser_file_name)
+    file_select.grid(row = 1, column = 1)
+
+    file_browser_quit = tk.Button(x2, text = "Exit", width = 20, height = 5, bg = "grey", bd = 6, command = quit)
+    file_select.grid(row = 1, column = 2)
+
+
 
 
 #button properties, command is the function/action performed
-dem_button = tk.Button(x, text = "Create 3D Elevation Model", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", bd = 6, command = convert_file)
+exit_button = tk.Button(x, text = "Exit...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6, command = x.destroy)
+exit_button.grid(row = 2, column = 2)
+
+dem_button = tk.Button(x, text = "Create 3D Elevation Model", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", 
+bd = 6, command = convert_file)
 dem_button.grid(row = 1, column = 1)
 
-browse_button = tk.Button(x, text = "Browse Files...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6)
+
+browse_button = tk.Button(x, text = "Browse Files...", width = 20, height = 5, bg = "grey", activebackground = "dark slate gray", bd = 6, command= file_browser_window)
 browse_button.grid(row = 1, column = 2)
 
-random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrain", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", bd = 6, command = generate_terrain)
+
+random_generation_button = tk.Button(x, text = "Generate Unique/Random 3D Terrain", width = 30, height = 10, bg = "grey", activebackground = "dark slate gray", 
+bd = 6, command = generate_terrain)
 random_generation_button.grid(row = 2, column = 1)
 
 
