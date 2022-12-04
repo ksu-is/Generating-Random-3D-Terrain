@@ -1,4 +1,4 @@
-#needed to import numpy, gdal, matlab, tkinter, and perlin noise
+#needed to import numpy, gdal, matlab, tkinter, and fractal noise
 import matlab as mat
 from osgeo import gdal
 from mayavi import mlab
@@ -6,7 +6,7 @@ import tkinter as tk
 import numpy as np
 from tkinter import *
 from tkinter import filedialog
-from perlin_numpy import generate_fractal_noise_2d, generate_perlin_noise_2d #might not need perlin
+from perlin_numpy import generate_fractal_noise_2d
 
 
 current_opened_file = "D:/Random Stuff/image.tif"
@@ -26,8 +26,8 @@ def file_browser():
 def convert_file():
 
     #assigning the file path for the tif image
-    file_path = current_opened_file
-    #file_path = assigned_file_directory
+    #file_path = current_opened_file
+    file_path = assigned_file_directory
 
     #opening the tif file and assigning it
     file = gdal.Open(file_path)
@@ -51,6 +51,7 @@ def convert_file():
 
 def generate_terrain():
     mlab.figure(size = (1025,1025))
+    
     #perlin noise method
     fractal_noise = generate_fractal_noise_2d((1024,1024), (8,8), 8)
     
