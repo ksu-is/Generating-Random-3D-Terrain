@@ -8,7 +8,6 @@ from tkinter import *
 from tkinter import filedialog
 from perlin_numpy import generate_fractal_noise_2d
 
-
 current_opened_file = "D:/Random Stuff/image.tif"
 assigned_file_directory = ""
 
@@ -26,8 +25,8 @@ def file_browser():
 def convert_file():
 
     #assigning the file path for the tif image
-    #file_path = current_opened_file
-    file_path = assigned_file_directory
+    file_path = current_opened_file
+    #file_path = assigned_file_directory
 
     #opening the tif file and assigning it
     file = gdal.Open(file_path)
@@ -53,7 +52,7 @@ def generate_terrain():
     mlab.figure(size = (1025,1025))
     
     #perlin noise method
-    fractal_noise = generate_fractal_noise_2d((1024,1024), (8,8), 8)
+    fractal_noise = generate_fractal_noise_2d((1024,1024), (4,4), 8)
     
     mlab.surf(fractal_noise, warp_scale = 50, colormap = "cool")
     mlab.show()
