@@ -20,13 +20,14 @@ def file_browser():
         current_selected_file.configure(text = "Current Selected File: " + current_opened_file)
         split_function = select_file_name.split("/")
         split_file_name = (split_function[0] + "//" + split_function[1] + "//" + split_function[2])
-        assigned_file_directory = "'" + select_file_name + "'"
+        assigned_file_directory = '"' + select_file_name + '"'
         print(assigned_file_directory)
 
 def convert_file():
 
     #assigning the file path for the tif image
-    file_path = assigned_file_directory #current_opened_file
+    file_path = current_opened_file
+    #file_path = assigned_file_directory
 
     #opening the tif file and assigning it
     file = gdal.Open(file_path)
