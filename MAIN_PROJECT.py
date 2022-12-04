@@ -8,13 +8,24 @@ from tkinter import *
 from tkinter import filedialog
 
 
-current_opened_file = "D:\Random Stuff\image.tif"
+current_opened_file = "D:/Random Stuff/image.tif"
+assigned_file_directory = ""
+
+def file_browser():
+    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File",)
+
+    if (select_file_name):
+        current_opened_file = select_file_name
+        current_selected_file.configure(text = "Current Selected File: " + current_opened_file)
+        split_function = select_file_name.split("/")
+        split_file_name = (split_function[0] + "//" + split_function[1] + "//" + split_function[2])
+        assigned_file_directory = "'" + select_file_name + "'"
+        print(assigned_file_directory)
 
 def convert_file():
 
     #assigning the file path for the tif image
-    file_path = current_opened_file
-    ######## Want to make the file_path a possible input for users to load custom DEM files through GUI instead of changing code #######
+    file_path = assigned_file_directory #current_opened_file
 
     #opening the tif file and assigning it
     file = gdal.Open(file_path)
@@ -45,17 +56,9 @@ def generate_terrain():
     large_array = np.random.random((rows,columns))
     
     
-    mlab.surf(large_array, warp_scale = 1, colormap = "cool")
+    mlab.surf(large_array, warp_scale = 2, colormap = "cool")
     mlab.show()
 
-
-
-def file_browser():
-    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File",)
-
-    if (select_file_name):
-        current_opened_file = select_file_name
-        current_selected_file.configure(text = "Current Selected File: " + current_opened_file)
 
 
 #initializing the window
