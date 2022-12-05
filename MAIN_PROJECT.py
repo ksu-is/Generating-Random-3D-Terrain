@@ -12,7 +12,7 @@ current_opened_file = "D:/Random Stuff/image.tif"
 assigned_file_directory = ""
 
 def file_browser():
-    select_file_name = filedialog.askopenfilename(initialdir = "/", title = "Select a File",)
+    select_file_name = filedialog.askopenfilename(initialdir = "/D:Random Stuff", title = "Select a File",)
 
     if (select_file_name):
         current_opened_file = select_file_name

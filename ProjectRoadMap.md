@@ -9,5 +9,4 @@
 - [x] Improve look and feel of GUI with possible nested windows
 - [x] Create function that will be used to generate random terrain (2d array which will be converted to 3d)
 - [x] Attach random terrain generation function to Tkinter button
-- [ ] Create a nested window/button to reload randomly generated terrain window?
 - [ ] Possibly Generate statistics for the loaded file DEM and/or random generated terrain? (Average DEM height, slope, etc...)
