@@ -28,14 +28,14 @@ def file_browser():
 def statistics(a,b,c,d,e,f):
     mean = np.mean(a)
     median = np.median(b)
-    #mode = stat.mode(c)
+    mode = stat.mode(c)
     standard_dev = np.std(d)
     min = np.min(e)
     max = np.max(f)
+    color_scheme = ["#264653","#2A9D8F","#E9C46A","#F4A261","#E76F51"]
 
-    plot.bar(["Mean","Median","Stand. Dev.","Minimum","Maximum"] , [mean, median, standard_dev, min, max])
+    plot.bar(["Mean","Median","Stand. Dev.","Minimum","Maximum"] , [mean, median, standard_dev, min, max], color = color_scheme)
     plot.title("Terrain Statistics")
-    plot.xlabel("Category")
     plot.ylabel("Terrain Height")
 
     plot.show()
@@ -73,7 +73,7 @@ def generate_terrain():
     fractal_noise = generate_fractal_noise_2d((1024,1024), (4,4), 8)
     
     mlab.surf(fractal_noise, warp_scale = 50, colormap = "cool")
-    
+
     statistics(fractal_noise, fractal_noise, fractal_noise, fractal_noise, fractal_noise/0, fractal_noise/0)
 
     mlab.show()
