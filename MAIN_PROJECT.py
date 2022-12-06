@@ -25,15 +25,17 @@ def file_browser():
         #assigned_file_directory = '"' + select_file_name + '"'
 
 
-def statistics(a,b,c,d):
+def statistics(a,b,c,d,e,f):
     mean = np.mean(a)
     median = np.median(b)
     #mode = stat.mode(c)
     standard_dev = np.std(d)
+    min = np.min(e)
+    max = np.max(f)
 
-    plot.bar(["Mean","Median","Stand. Dev."] , [mean, median, standard_dev])
+    plot.bar(["Mean","Median","Stand. Dev.","Minimum","Maximum"] , [mean, median, standard_dev, min, max])
     plot.title("Terrain Statistics")
-    plot.xlabel("Statistical Values")
+    plot.xlabel("Category")
     plot.ylabel("Terrain Height")
 
     plot.show()
@@ -56,7 +58,7 @@ def convert_file():
     #mlab surf function takes the 2D numpy array and plots the surface, warp scale is vertical exaggeration/scale factor
     mlab.surf(data_array, warp_scale = 0.01, colormap = "cool")
 
-    statistics(data_array,data_array,data_array, data_array)
+    statistics(data_array,data_array,data_array, data_array, data_array, data_array)
     
     #mlab shows the plotted 3D DEM
     mlab.show()
@@ -72,7 +74,7 @@ def generate_terrain():
     
     mlab.surf(fractal_noise, warp_scale = 50, colormap = "cool")
     
-    statistics(fractal_noise,fractal_noise,fractal_noise,fractal_noise)
+    statistics(fractal_noise, fractal_noise, fractal_noise, fractal_noise, fractal_noise/0, fractal_noise/0)
 
     mlab.show()
 
