@@ -1,4 +1,4 @@
-#needed to import numpy, gdal, matlab, tkinter, and fractal noise
+#importing all necessary libraries
 from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
