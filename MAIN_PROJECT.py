@@ -10,7 +10,7 @@ from tkinter import filedialog
 from perlin_numpy import generate_fractal_noise_2d
 
 current_opened_file = "D:/Random Stuff/image.tif"
-assigned_file_directory = ""
+#assigned_file_directory = ""
 
 def file_browser():
     select_file_name = filedialog.askopenfilename(initialdir = "/D:Random Stuff", title = "Select a File",)
@@ -31,14 +31,12 @@ def statistics(a,b,c,d):
     #mode = stat.mode(c)
     standard_dev = np.std(d)
 
-    #print("Mean: " , mean , "\nMedian: " , median , "\nMode: " , mode , "\nStandard Deviation: " , standard_dev)
     plot.bar(["Mean","Median","Stand. Dev."] , [mean, median, standard_dev])
     plot.title("Terrain Statistics")
     plot.xlabel("Statistical Values")
     plot.ylabel("Terrain Height")
 
     plot.show()
-
 
 def convert_file():
 
@@ -75,7 +73,7 @@ def generate_terrain():
     mlab.surf(fractal_noise, warp_scale = 50, colormap = "cool")
     
     statistics(fractal_noise,fractal_noise,fractal_noise,fractal_noise)
-    
+
     mlab.show()
 
 
