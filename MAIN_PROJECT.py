@@ -1,9 +1,10 @@
 #needed to import numpy, gdal, matlab, tkinter, and fractal noise
-import matlab as mat
 from osgeo import gdal
 from mayavi import mlab
 import tkinter as tk
 import numpy as np
+from scipy import stats as stat
+from matplotlib import pyplot as plot
 from tkinter import *
 from tkinter import filedialog
 from perlin_numpy import generate_fractal_noise_2d
@@ -15,18 +16,34 @@ def file_browser():
     select_file_name = filedialog.askopenfilename(initialdir = "/D:Random Stuff", title = "Select a File",)
 
     if (select_file_name):
+        global current_opened_file 
         current_opened_file = select_file_name
         current_selected_file.configure(text = "Current Selected File: " + current_opened_file)
-        split_function = select_file_name.split("/")
-        split_file_name = (split_function[0] + "//" + split_function[1] + "//" + split_function[2])
-        assigned_file_directory = '"' + select_file_name + '"'
-        print(assigned_file_directory)
+        
+        #split_function = select_file_name.split("/")
+        #split_file_name = (split_function[0] + "//" + split_function[1] + "//" + split_function[2])
+        #assigned_file_directory = '"' + select_file_name + '"'
+
+
+def statistics(a,b,c,d):
+    mean = np.mean(a)
+    median = np.median(b)
+    #mode = stat.mode(c)
+    standard_dev = np.std(d)
+
+    #print("Mean: " , mean , "\nMedian: " , median , "\nMode: " , mode , "\nStandard Deviation: " , standard_dev)
+    plot.bar(["Mean","Median","Stand. Dev."] , [mean, median, standard_dev])
+    plot.title("Terrain Statistics")
+    plot.xlabel("Statistical Values")
+    plot.ylabel("Terrain Height")
+
+    plot.show()
+
 
 def convert_file():
 
     #assigning the file path for the tif image
     file_path = current_opened_file
-    #file_path = assigned_file_directory
 
     #opening the tif file and assigning it
     file = gdal.Open(file_path)
@@ -41,7 +58,8 @@ def convert_file():
     #mlab surf function takes the 2D numpy array and plots the surface, warp scale is vertical exaggeration/scale factor
     mlab.surf(data_array, warp_scale = 0.01, colormap = "cool")
 
-
+    statistics(data_array,data_array,data_array, data_array)
+    
     #mlab shows the plotted 3D DEM
     mlab.show()
     
@@ -55,6 +73,9 @@ def generate_terrain():
     fractal_noise = generate_fractal_noise_2d((1024,1024), (4,4), 8)
     
     mlab.surf(fractal_noise, warp_scale = 50, colormap = "cool")
+    
+    statistics(fractal_noise,fractal_noise,fractal_noise,fractal_noise)
+    
     mlab.show()
 
 
